@@ -40,7 +40,7 @@ def search_movies():
 @app.get('/movies/<int:movie_id>')
 def get_single_movie(movie_id: int):
     # TODO: Feature 4
-    
+    #Nicholas Zoll
     single = movie_repository.get_movie_by_id(movie_id) # use the passed-in movie_id value with the get_movie_by_id function to get the movie object
     single_id = single.movie_id                         # store the associated movie id into single_id
     single_title = single.title                         # store the associated movie title into single_title
