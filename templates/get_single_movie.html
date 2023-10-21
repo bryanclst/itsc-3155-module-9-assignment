@@ -5,4 +5,34 @@
 {% block body %}
 <h1 class="mb-5"></h1>
 <!-- TODO: Feature 4 -->
+
+
+<h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Movie Title: {{single_title}}</h2>
+<p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Movie ID: {{single_id}}</p>
+<p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Director: {{single_director}}</p>
+<p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: red;">Rating: {{single_rating}} star(s)</p>
+
+
+<form action="/movies/{{single_id}}/edit" method="get">
+    <button type="submit" name="movie_edit" value="{{single_id}}" style="background-color: green; width: 150px;" class="btn btn-primary">Edit Movie</button>
+</form>
+
+
+<form action="/movies/{{single_id}}/delete" method="post">
+    <button type="submit" name="movie_remove" value="{{single_id}}" style="background-color: red; margin-top: 20px; width: 150px;" class="btn btn-primary">Delete Movie</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% endblock %}
