@@ -12,6 +12,6 @@ def test_create_movie(test_app: FlaskClient):
     assert response
     assert response.status_code == 302 #status code for a redirect
 
-    #asserts that the movie was successfully created and posted
+    #tests that the movie was successfully created and posted
     response = test_app.post('/movies', follow_redirects=True)
     assert response.status_code == 200
