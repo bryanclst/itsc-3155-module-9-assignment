@@ -5,5 +5,25 @@
 {% block body %}
 <h1 class="mb-5">All Movies</h1>
 <p class="mb-3">See our list of movie ratings below</p>
-<!-- TODO: Feature 1 -->
+<!-- TODO: Feature 1 Kiana Truong-- >
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rating in saved_rating %}
+                <tr>
+                    <td>{{rating.movie_title}}</td>
+                    <td>{{rating.rating}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
 {% endblock %}

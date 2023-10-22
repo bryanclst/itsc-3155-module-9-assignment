@@ -1,6 +1,7 @@
 from flask import Flask, redirect, render_template
 
 from src.repositories.movie_repository import get_movie_repository
+from src.models.rating import Rating
 
 app = Flask(__name__)
 
@@ -16,7 +17,13 @@ def index():
 @app.get('/movies')
 def list_all_movies():
     # TODO: Feature 1
-    return render_template('list_all_movies.html', list_movies_active=True)
+    ratings= [
+        {'movie_title': 'Halloween', 'rating' : 4.5},
+        {'movie_title': 'Spider-Man', 'rating' : 3.5},
+        {'movie_title': 'Batman', 'rating' : 2.0},
+        {'movie_title': 'Cinderella', 'rating' : 4.2},
+    ]
+    return render_template('list_all_movies.html', list_movies_active=True, saved_ratings=ratings)
 
 
 @app.get('/movies/new')
@@ -72,3 +79,8 @@ def update_movie(movie_id: int):
 def delete_movie(movie_id: int):
     # TODO: Feature 6
     pass
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
