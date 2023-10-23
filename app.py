@@ -1,7 +1,6 @@
 from flask import Flask, redirect, render_template
 
 from src.repositories.movie_repository import get_movie_repository
-from src.models.rating import Rating
 
 app = Flask(__name__)
 
@@ -17,13 +16,8 @@ def index():
 @app.get('/movies')
 def list_all_movies():
     # TODO: Feature 1
-    ratings= [
-        {'movie_title': 'Halloween', 'rating' : 4.5},
-        {'movie_title': 'Spider-Man', 'rating' : 3.5},
-        {'movie_title': 'Batman', 'rating' : 2.0},
-        {'movie_title': 'Cinderella', 'rating' : 4.2},
-    ]
-    return render_template('list_all_movies.html', list_movies_active=True, saved_ratings=ratings)
+    all_movies = movie_repository.get_all_movies()
+    return render_template('list_all_movies.html', list_movies_active=True, movies=all_movies)
 
 
 @app.get('/movies/new')

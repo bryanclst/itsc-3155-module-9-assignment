@@ -12,14 +12,16 @@
         <thead>
             <tr>
                 <th>Title</th>
+                <th>Director</th>
                 <th>Rating</th>
             </tr>
         </thead>
         <tbody>
-            {% for rating in saved_rating %}
+            {% for movie in all_movies %}
                 <tr>
-                    <td>{{rating.movie_title}}</td>
-                    <td>{{rating.rating}}</td>
+                    <td>{{movie.title}}</td>
+                    <td>{{movie.director}}</td>
+                    <td>{{movie.rating}}</td>
                 </tr>
             {% endfor %}
         </tbody>
