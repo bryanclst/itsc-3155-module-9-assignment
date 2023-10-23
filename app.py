@@ -28,6 +28,20 @@ def create_movies_form():
 def create_movie():
     # TODO: Feature 2
     # After creating the movie in the database, we redirect to the list all movies page
+
+    #Chase Chiswell
+
+    #extract movie rating data from the create movies form
+    mov_title = request.form.get('mov_title')
+    mov_director = request.form.get('mov_director')
+    mov_rating = request.form.get('mov_rating')
+
+    if mov_title == None or mov_director == None or mov_title == "" or mov_director == "" or mov_rating == None or int(mov_rating) > 5 or int(mov_rating) < 1:
+        abort(400)
+    
+    #create a movie using the extracted data and redirect to the movies page
+    movie_repository.create_movie(mov_title, mov_director, mov_rating)
+ 
     return redirect('/movies')
 
 
