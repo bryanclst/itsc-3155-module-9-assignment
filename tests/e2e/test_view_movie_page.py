@@ -39,4 +39,4 @@ def test_view_movie_page_bad_2(test_app):
     movie_repository.clear_db()
 
     response = test_app.get('/movies/1')
-    assert response.status_code == 500 #checks if request is unsuccessful when invalid movie id is used 
+    assert response.status_code == 400 #checks if request is unsuccessful when invalid movie id is used 
