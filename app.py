@@ -36,7 +36,7 @@ def create_movie():
     mov_director = request.form.get('mov_director')
     mov_rating = request.form.get('mov_rating')
 
-    if mov_title == None or mov_director == None or mov_title == "" or mov_director == "" or mov_rating == None:
+    if mov_title == None or mov_director == None or mov_title == "" or mov_director == "" or mov_rating == None or int(mov_rating) > 5 or int(mov_rating) < 1:
         abort(400)
     
     #create a movie using the extracted data and redirect to the movies page

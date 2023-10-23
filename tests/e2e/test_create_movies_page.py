@@ -18,16 +18,22 @@ def test_create_movie(test_app: FlaskClient):
     assert response
     assert response.status_code == 200
     
-
-    
-    
 def test_create_movie_bad(test_app: FlaskClient):
     movie_repository.clear_db()
 
     response2 = test_app.post('/movies', data = {
-        'title': None,
+        'title': "Spaceballs",
         'director': None,
-        'rating': None})
+        'rating': 4})
     assert response2.status_code == 400
+
+def test_create_movie_bad_rating(test_app:FlaskClient):
+    movie_repository.clear_db()
+
+    response3 = test_app.post('/movies', data = {
+        'title': "The Emperor's New Groove",
+        'director': "Mark Dindal",
+        'rating': 10})
+    assert response3.status_code == 400
     
 
