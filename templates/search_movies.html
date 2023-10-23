@@ -5,5 +5,23 @@
 {% block body %}
 <h1 class="mb-5">Search Movie Ratings</h1>
 <p class="mb-3">Search for a movie rating below</p>
-<!-- TODO: Feature 3 -->
+<!-- Feature 3 - Bryan -->
+<div class="container">
+    <form action="/movies/search" method="post" class="mt-2">
+        <div class="mb-3">
+            <input type="text" class="form-control" name="title" required placeholder="Enter a movie title...">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<div class="container mt-3">
+    {% if searching == True %}
+        {% if movie == None %}
+        <h3>We couldn't find a movie with that title, please try again.</h3>
+        {% else %}
+        <h3><i>{{movie.title}}</i> has a rating of <b>{{movie.rating}}</b>.</h3>
+        {% endif %}
+    {% endif %}
+</div>
 {% endblock %}

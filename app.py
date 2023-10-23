@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template, request, abort
 
 from src.repositories.movie_repository import get_movie_repository
 
@@ -32,9 +32,19 @@ def create_movie():
 
 
 @app.get('/movies/search')
+@app.post('/movies/search')
 def search_movies():
-    # TODO: Feature 3
-    return render_template('search_movies.html', search_active=True)
+    # Feature 3 - Bryan
+    searching = False
+    movie = None # this will be set to a value if a valid movie title is given
+    if request.method == 'POST': # only do stuff with the form if a post request was made
+        searching = True
+        title = request.form.get('title')
+        if title == None or title == "":
+            abort(400)
+        else:
+            movie = movie_repository.get_movie_by_title(title)
+    return render_template('search_movies.html', search_active=True, searching=searching, movie=movie)
 
 
 @app.get('/movies/<int:movie_id>')
