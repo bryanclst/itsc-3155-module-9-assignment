@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request, abort
 
 from src.repositories.movie_repository import get_movie_repository
 
@@ -36,8 +36,12 @@ def create_movie():
     mov_director = request.form.get('mov_director')
     mov_rating = request.form.get('mov_rating')
 
+    if mov_title == None or mov_director == None or mov_title == "" or mov_director == "" or mov_rating == None:
+        abort(400)
+    
     #create a movie using the extracted data and redirect to the movies page
     movie_repository.create_movie(mov_title, mov_director, mov_rating)
+ 
     return redirect('/movies')
 
 
