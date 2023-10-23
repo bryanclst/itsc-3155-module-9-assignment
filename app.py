@@ -44,12 +44,9 @@ def get_single_movie(movie_id: int):
     single = movie_repository.get_movie_by_id(movie_id) # use the passed-in movie_id value with the get_movie_by_id function to get the movie object
     if single == None:
         abort(400)
-    single_id = single.movie_id                         # store the associated movie id into single_id
-    single_title = single.title                         # store the associated movie title into single_title
-    single_director = single.director                   # store the associated movie director into single_director
-    single_rating = single.rating                       # store the associated rating into single_rating
+    
 
-    return render_template('get_single_movie.html', single = single, single_id = single_id, single_title = single_title, single_director = single_director, single_rating = single_rating) #pass in the single movie data
+    return render_template('get_single_movie.html', single = single) #pass in the movie
 
 
 @app.get('/movies/<int:movie_id>/edit')
