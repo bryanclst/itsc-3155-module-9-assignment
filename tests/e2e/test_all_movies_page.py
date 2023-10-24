@@ -15,15 +15,16 @@ def test_all_movies_page(test_app):
     response = client.get('/movies')
     
     assert response.status_code ==200
-    assert response.data is not None
     
-    assert b'All Movies' in response.data
-    assert b'See our list of movie ratings below' in response.data
-    assert b'Halloween' in response.data
-    assert b'San Diego' in response.data
-    assert b'4' in response.data
+    if response.data:
+        assert b'All Movies' in response.data
+        assert b'See our list of movie ratings below' in response.data
+        assert b'Halloween' in response.data
+        assert b'San Diego' in response.data
+        assert b'4' in response.data
 
-    assert b'Scary Movie' in response.data
-    assert b'San Dino' in response.data
-    assert b'2' in response.data
-
+        assert b'Scary Movie' in response.data
+        assert b'San Dino' in response.data
+        assert b'2' in response.data
+    else:
+        assert b'No movie entries found' in response.data
