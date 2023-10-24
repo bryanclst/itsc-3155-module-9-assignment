@@ -27,7 +27,9 @@ def test_search_movie_found(test_app: FlaskClient) -> None:
     data = response.data.decode()
 
     assert response.status_code == 200
-    assert '</i> has a rating of <b>' in data
+    assert 'has a rating of' in data
+    assert 'View Movie Page' in data
+    assert "We couldn't find a movie with that title, please try again." not in data
 
 def test_search_movie_not_found(test_app: FlaskClient) -> None:
     
@@ -40,4 +42,6 @@ def test_search_movie_not_found(test_app: FlaskClient) -> None:
     data = response.data.decode()
 
     assert response.status_code == 200
-    assert "<h3>We couldn't find a movie with that title, please try again.</h3>" in data
+    assert "has a rating of" not in data
+    assert 'View Movie Page' not in data
+    assert "We couldn't find a movie with that title, please try again." in data
