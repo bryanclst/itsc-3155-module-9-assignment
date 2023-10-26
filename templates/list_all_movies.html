@@ -20,7 +20,8 @@
             <tbody>
                 {% for movie in all_movies.values() %}
                     <tr>
-                        <td>{{ movie.title }}</td>
+                        <td>
+                            <a href="/movies/{{ movie.movie_id}}" class="text-decoration-none"> {{movie.title}}</a></td>
                         <td>{{ movie.director }}</td>
                         <td>{{ movie.rating }}</td>
                     </tr>

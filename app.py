@@ -12,13 +12,11 @@ movie_repository = get_movie_repository()
 def index():
     return render_template('index.html')
 
-
 @app.get('/movies')
 def list_all_movies():
     # TODO: Feature 1
     all_movies = movie_repository.get_all_movies()
     return render_template('list_all_movies.html', list_movies_active=True, all_movies=all_movies)
-
 
 @app.get('/movies/new')
 def create_movies_form():
@@ -69,7 +67,6 @@ def get_single_movie(movie_id: int):
     single = movie_repository.get_movie_by_id(movie_id) # use the passed-in movie_id value with the get_movie_by_id function to get the movie object
     if single == None:
         abort(400)
-    
 
     return render_template('get_single_movie.html', single = single) #pass in the movie
 
