@@ -73,7 +73,7 @@ def get_single_movie(movie_id: int):
 
     return render_template('get_single_movie.html', single = single) #pass in the movie
 
-
+"""
 @app.get('/movies/<int:movie_id>/edit')
 def get_edit_movies_page(movie_id: int):
     mov = movie_repository.get_movie_by_id(movie_id) # 
@@ -83,7 +83,7 @@ def get_edit_movies_page(movie_id: int):
     mov_rating = mov.rating                       #
 
     return render_template('edit_movies_form.html', mov = mov, mov_id = mov_id, mov_title = mov_title, mov_director = mov_director, mov_rating = mov_rating)
-
+"""
 
 @app.post('/movies/<int:movie_id>')
 def update_movie(movie_id: int):

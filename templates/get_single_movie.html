@@ -13,12 +13,12 @@
 <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: red;">Rating: {{single.rating}} star(s)</p>
 
 
-<form action="/movies/{{single.movie_id}}/edit" method="get">
+<form action="#" method="get">
     <button type="submit" name="movie_edit" value="{{single.id}}" style="background-color: green; width: 150px;" class="btn btn-primary">Edit Movie</button>
 </form>
 
 
-<form action="/movies/{{single.movie_id}}/delete" method="post">
+<form action="#" method="post">
     <button type="submit" name="movie_remove" value="{{single.id}}" style="background-color: red; margin-top: 20px; width: 150px;" class="btn btn-primary">Delete Movie</button>
 </form>
 
